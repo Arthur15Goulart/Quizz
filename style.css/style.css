@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&display=swap");
+      /* Estilos CSS para formatar o quadro de perguntas */
+      body {
+        background-color: #000000;
+        text-align: center;
+      }
+      .question-box {
+        position: absolute;
+        font-family: "Reddit Mono", monospace;
+        color: rgb(228, 228, 228);
+        width: 400px;
+        margin-top: 12px;
+        margin-left: 120px;
+        top: 25px;
+        left: 70px;
+        z-index: 4;
+        background-color: rgb(10, 92, 10);
+        border: 5px solid rgb(133, 65, 60);
+        box-shadow: 0px 0px 10px black;
+      }
+
+      .container-answer {
+        display: flex;
+        position: absolute;
+        z-index: 99;
+        width: 635px;
+        justify-content: space-between;
+        height: 80px;
+        margin-top: 323px;
+        margin-left: 105px;
+      }
+
+      .container-answer .answer-button {
+        width: 180px;
+        height: 80px;
+        background-color: rgb(140, 0, 255);
+        outline: none;
+        border: none;
+        border-radius: 2px;
+        color: #fff;
+        font-size: 30px;
+        border-bottom: 15px solid rgb(69, 0, 126);
+        text-shadow: 0px 0px 2px black;
+      }
+
+      .answer-button:active {
+        border-bottom: 10px solid rgb(84, 0, 153);
+      }
+
+      .score-point {
+        position: absolute;
+        z-index: 9;
+        font-size: 18px;
+        color: white;
+        margin-top: 425px;
+        margin-left: 340px; 
+        font-family: Arial;
+        width: 200px;
+        text-align: center;
+        display: flex;
+        gap: 10px;
+      }
+
+      .message {
+        position: absolute;
+        z-index: 9;
+        font-size: 18px;
+        margin-top: 255px;
+        margin-left: 340px; 
+        font-family: Arial;
+        width: 200px;
+        text-align: center;
+        display: flex;
+        gap: 10px;
+        color: #fff;
+      }
+
+      .alert{
+        color: #fff;
+      }
+
+     

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogo de Perguntas</title>
+    <div class="imagem-fundo">
+      <img src="bG.png" alt="Imagem de fundo" />
+      <img class="imagem-sobreposta" src="mS.png" alt="Imagem sobreposta" />
+    </div>
+  </head>
+  <body>
+    <div class="question-box">
+      <h1>Quanto é</h1>
+      <p id="question"></p>
+    </div>
+
+    <div class="container-answer">
+      <button class="answer-button" onclick="checkAnswer(this)">
+        Resposta 1
+      </button>
+      <button class="answer-button" onclick="checkAnswer(this)">
+        Resposta 2
+      </button>
+      <button class="answer-button" onclick="checkAnswer(this)">
+        Resposta 3
+      </button>
+    </div>
+
+    <div class="message">
+      <p id="alert"></p>
+    </div>
+    
+
+
+    <div class="score-point">
+      <p>Sua pontuação: <p id="score"></p></p>
+    </div>
+    
+    <script>
+        score = 0; 
+        document.getElementById('score').textContent = score
+        // Função para gerar números aleatórios entre 1 e 9
+        function getRandomNumber() {
+        return Math.floor(Math.random() * 9) + 1;
+      }
+      
+      // Função para criar uma pergunta aleatória de multiplicação
+      function generateQuestion() {
+        const num1 = getRandomNumber();
+        const num2 = getRandomNumber();
+        const correctAnswer = num1 * num2;
+        
+        document.getElementById("question").textContent = `${num1} × ${num2}?`;
+        const answerButtons = document.querySelectorAll(".answer-button");
+        const answers = [correctAnswer];
+        while (answers.length < answerButtons.length) {
+            const randomAnswer = getRandomNumber() * getRandomNumber();
+            if (!answers.includes(randomAnswer)) {
+                answers.push(randomAnswer);
+            }
+        }
+        answers.sort(() => Math.random() - 0.5); // Embaralhar as respostas
+        
+        answerButtons.forEach((button, index) => {
+          button.textContent = answers[index];
+          button.dataset.correct =
+            answers[index] === correctAnswer ? "true" : "false";
+        });
+    }
+
+    // Função para verificar a resposta do usuário
+    function checkAnswer(button) {
+        const isCorrect = button.dataset.correct === "true";
+        if (isCorrect) {
+            document.getElementById('alert').style.color = 'green'
+            document.getElementById('alert').textContent = 'Você acertou, parabens!'
+            score = score+10;
+            document.getElementById('score').textContent = score
+          } else {
+            document.getElementById('alert').style.color  = 'red'
+            document.getElementById('alert').textContent = 'Você errou, animal!'
+            score = score-10;
+            document.getElementById('score').textContent = score
+        }
+        generateQuestion(); // Gerar uma nova pergunta
+    }
+    
+    // Inicialização: gerar a primeira pergunta
+    generateQuestion();
+    </script>
+  </body>
+  </html>
